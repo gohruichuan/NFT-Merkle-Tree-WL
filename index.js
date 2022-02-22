@@ -13,12 +13,13 @@ const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
 const rootHash = merkleTree.getRoot();
 console.log('rootHash ', rootHash.toString('hex'));
 
-
+console.log("===========")
 console.log('Whitelist Merkle Tree ', merkleTree.toString());
 
 const claimingAddress = leafNodes[0];
-console.log('claimingAddress ', claimingAddress);
 
 const hexProof = merkleTree.getHexProof(claimingAddress);
 
 console.log('hexProof ', hexProof);
+
+console.log('Verification===== ', merkleTree.verify(hexProof, claimingAddress, rootHash));
